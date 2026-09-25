@@ -1,0 +1,28 @@
+# Build dirs (pico-sdk and ESP-IDF)
+**/build
+build
+
+# ESP-IDF generated config and fetched components
+sdkconfig
+sdkconfig.old
+managed_components/
+
+# Object files / binaries
+*.o
+*.a
+*.elf
+*.bin
+*.hex
+*.uf2
+*.map
+
+# Editor / Python
+*.swp
+*~
+__pycache__/
+
+# Per-project WiFi credentials
+wifi_secrets.h
+
+# Personal Claude Code session config
+.claude/settings.json
