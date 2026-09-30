@@ -15,8 +15,9 @@ Background: `esp32-dev/SESSION-SUMMARY-2026-09-22.md`, section 6 (attic radiant-
 
 ## Code layout (proposed)
 
-- **Portable core:** ADS1115 driver, ratiometric math, Steinhart-Hart, calibration coefficients. No platform includes.
-- **Per-platform ports:** `ports/pico/` and `ports/esp-idf/`. Each provides the same few functions: I2C write, I2C read, GPIO set, delay.
+- **Portable core** (`ads1115_core/`): ADS1115 driver, ratiometric math, Steinhart-Hart, calibration coefficients. No platform includes.
+- **Per-platform ports:** `ports/ads1115_pico/` and `ports/ads1115_idf/`. Each provides the same few functions: I2C write, I2C read, GPIO set, delay.
+- **Directory names are component names.** ESP-IDF names a component after its directory, and names share one namespace across the consuming build. Hence the `ads1115_` prefix: `ads1115_core` and `ads1115_idf` can't be mistaken for ESP-IDF itself or clash with another library's `core` (renamed from `core/` and `ports/esp-idf/`, 2026-09-30).
 - **Consumers:** applications live in the platform repos (`esp32-dev`, `pico-dev`). For now they reference this repo as a sibling checkout by relative path. A git submodule, pinned per repo, is reviewed at the end of stage 1 (`esp32-dev/thermistor-cal`, stage 1j).
 - **No code is moved into this repo from existing workspaces** as part of new work. Moving code is a separate, deliberate step.
 
