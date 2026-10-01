@@ -22,7 +22,8 @@
 #define ADS_CFG_COMP_OFF   0x0003  // comparator disabled, ALERT/RDY pin high-impedance
 
 // Field codes below are recalled, not checked against the datasheet.
-// MUX: single-ended input against GND.
+// MUX: differential A0 - A1, then single-ended inputs against GND.
+#define ADS_MUX_A0_A1      0
 #define ADS_MUX_A0_GND     4
 #define ADS_MUX_A1_GND     5
 #define ADS_MUX_A2_GND     6
