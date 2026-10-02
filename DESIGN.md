@@ -58,6 +58,7 @@ Background: `esp32-dev/SESSION-SUMMARY-2026-09-22.md`, section 6 (attic radiant-
 - Spec: 10k, 0.1%, **≤10 ppm/°C**, thin film or better.
   - At 10 ppm/°C, a 20→50 °C swing is 0.03%, about 0.007 °C of reading error.
   - A 100 ppm/°C part would be about 0.1 °C. Avoid.
+- **As bought (ordered 2026-10-01): 15 ppm/°C**, the best available. Accepted: the same 20→50 °C swing is 0.045%, about 0.01 °C of reading error, well inside the ±0.05–0.1 °C the matched pair needs. *(Scaled from the 10 ppm figure above, not measured.)*
 - Aging: datasheet load-life figures (e.g. 0.05–0.25% after 1000 h at 70 °C, full power) are worst case. With pulsed, near-zero dissipation at ≤50 °C, expected drift is a few hundredths of a °C per year at most. *(Estimate, not measured.)*
 
 ## Parts sourcing
