@@ -31,6 +31,14 @@ Background: `esp32-dev/SESSION-SUMMARY-2026-09-22.md`, section 6 (attic radiant-
 - Budget: **3 thermistors + 1 excitation monitor per chip.** Up to 4 chips per I2C bus (0x48–0x4B).
 - Use the same PGA setting for every channel, so gain errors cancel in the ratio.
 
+### Excitation timing (discussed 2026-10-05; numbers are estimates until tested)
+
+- **Fixed wait after switching the excitation on, before the conversion starts: about 20 ms** (user agreed 2026-10-05, to be confirmed on the bench). The wait lives in the library core, not in each port, so every board times it the same way.
+- **Why:** the input climbs to its final value through the input filter (proposed 1 kΩ + 100 nF) and the divider's own resistance: a time constant of about 1 ms at worst (cold thermistor), about 11 time constants to come within one ADC step, so about 12 ms. With no wait, an 8 SPS conversion averages the climb in and reads roughly 0.7% low (about 0.15 °C at room temperature), by an amount that changes with the thermistor's resistance.
+- **Bench test:** vary the wait and find where the reading stops changing.
+- **Owed to the user:** a step-by-step walk through this arithmetic when the topic is picked up again, before the number is fixed.
+- **Still to discuss:** self-heating within the pulse (how long the excitation stays on, and the order the inputs are read). It differs between a stirred bath and still air, so calibration doesn't absorb it.
+
 ### Single-ended, not differential
 
 **Decision:** single-ended inputs.
